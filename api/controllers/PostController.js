@@ -13,7 +13,7 @@ module.exports = {
     });
   },
   fetchPostById: (req, res) => {
-    Post.find({_id: req.param('id')}).populate('comments').exec((err, data) => {
+    Post.findOne({_id: req.param('id')}).populate('comments').exec((err, data) => {
       if (err) return res.status(500).send(err);
       res.status(200).send(data);
     });

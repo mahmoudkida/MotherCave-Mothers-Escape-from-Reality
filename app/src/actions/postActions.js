@@ -11,12 +11,12 @@ export const fetchPosts = () => dispatch => {
       })
     );
 };
-export const fetchPostById = () => dispatch => {
-  fetch(`${ENDPOINT_URL}/${POST_CONTROLLER}/${GET_POST_BY_ID_ENDPOINT}`)
+export const fetchPostById = (id) => dispatch => {
+  fetch(`${ENDPOINT_URL}/${POST_CONTROLLER}/${GET_POST_BY_ID_ENDPOINT}?id=${id}`)
     .then(res => res.json())
     .then(post =>
       dispatch({
-        type: FETCH_POSTS,
+        type: FETCH_POST_BY_ID,
         payload: post
       })
     );

@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createPost } from '../actions/postActions';
-import { Button, Form, FormGroup, Label, Input, FormText, TextAre } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 class PostForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       title: '',
-      body: ''
+      body: '',
+      username:'',
+      password:''
     };
 
     this.onChange = this.onChange.bind(this);

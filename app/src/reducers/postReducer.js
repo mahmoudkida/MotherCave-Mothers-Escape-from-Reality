@@ -15,7 +15,7 @@ export default function(state = initialState, action) {
     case NEW_POST:
       return {
         ...state,
-        post: action.payload
+        posts: action.payload
       };
     case FETCH_POST_BY_ID:
       return {
