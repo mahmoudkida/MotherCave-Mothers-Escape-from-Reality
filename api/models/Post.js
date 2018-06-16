@@ -22,8 +22,7 @@ module.exports = {
       required: true
     },
     password:{
-      type : 'string',
-      required: true
+      type : 'string'
     },
     comments: {
       collection: 'comment',
@@ -32,11 +31,18 @@ module.exports = {
   },
   beforeCreate: function (valuesToSet, proceed) {
     // Hash password
-    sails.helpers.passwords.hashPassword(valuesToSet.password).exec((err, hashedPassword)=>{
-      if (err) { return proceed(err); }
-      valuesToSet.password = hashedPassword;
-    return proceed();
-  });//_∏_
+    if(valuesToSet.password) {
+      sails.helpers.passwords.hashPassword(valuesToSet.password).exec((err, hashedPassword) => {
+        if (err) {
+          return proceed(err);
+        }
+        valuesToSet.password = hashedPassword;
+        return proceed();
+      });//_∏_
+    }
+    else {
+      return proceed();
+    }
   }
 };
 

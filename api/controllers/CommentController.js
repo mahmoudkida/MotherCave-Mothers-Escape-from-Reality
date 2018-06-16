@@ -8,14 +8,14 @@
 module.exports = {
   fetchAllComments: (req, res) => {
     Comment.find({}).exec((err, data) => {
-      if (err) return res.send(err, 500);
-      res.ok(data);
+      if (err) return res.status(500).send(err);
+      res.status(200).send(data);
     });
   },
   fetchCommentById: (req, res) => {
     Comment.find({_id: req.param('id')}).exec((err, data) => {
-      if (err) return res.send(err, 500);
-      res.ok(data);
+      if (err) return res.status(500).send(err);
+      res.status(200).send(data);
     });
   },
   insertComment: (req, res) => {
@@ -26,8 +26,8 @@ module.exports = {
       password: req.param('password'),
     };
     Comment.insert(comment).exec((err, data) => {
-      if (err) return res.send(err, 500);
-      res.ok(data);
+      if (err) return res.status(500).send(err);
+      res.status(200).send(data);
     });
   },
 

@@ -1,0 +1,10 @@
+export const SERVER_URL = 'localhost';
+export const SERVER_PORT = '1337';
+export const POST_CONTROLLER = 'post';
+export const GET_POSTS_ENDPOINT = 'fetchAllPosts';
+export const GET_POST_BY_ID_ENDPOINT = 'fetchPostById';
+export const CREATE_POST_ENDPONT = 'insertPost';
+export const COMMENT_CONTROLLER = 'comment';
+export const GET_COMMENTS_ENDPOINT = 'fetchAllComments';
+export const GET_COMMENT_BY_ID_ENDPOINT = 'fetchCommentById';
+export const CREATE_COMMENT_ENDPONT = 'insertComment';
