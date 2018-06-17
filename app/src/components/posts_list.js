@@ -12,7 +12,7 @@ class Posts extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false
+      modal: false,
     };
 
     this.toggle = this.toggle.bind(this);
@@ -33,10 +33,18 @@ class Posts extends Component {
   }
 
   render() {
-    const postItems = this.props.posts.map(post => (
-      <PostItem post={post} key={post.id}/>
+    const postItems = () =>{
+      if(this.props.posts && this.props.posts.length ){
+        return (this.props.posts.map(post => (
+          <PostItem post={post} key={post.id}/>
 
-    ));
+        ))
+        )
+      }
+      else{
+        return (<h3 className="align-self-center">No Stories added yet by te users</h3>)
+      }
+    };
     return (
       <div>
         <div className="jumbotron">
@@ -55,13 +63,16 @@ class Posts extends Component {
           </ModalBody>
         </Modal>
         <div className="row">
-          <div className="title col-12 col-md-8">
-            <h2 className="align-center pb-3 mbr-fonts-style display-4">LATEST STORIES</h2>
+          <div className="title col-12 d-flex justify-content-between">
+            <h2 className=" pb-3 mbr-fonts-style display-4">LATEST STORIES</h2>
+            <div className=" ">
+            <a onClick={this.toggle} className="btn btn-primary btn-lg" href="javascript:" role="button">Add your story</a>
+            </div>
           </div>
         </div>
-        <section className="row">
-          {postItems}
 
+        <section className="row">
+            {postItems()}
         </section>
       </div>
     );
